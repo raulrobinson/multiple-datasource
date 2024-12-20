@@ -1,0 +1,46 @@
+services:
+
+  postgres-one:
+    image: postgres:latest
+    container_name: postgres-one
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres-one
+      - POSTGRES_PASSWORD=postgres-one
+      - POSTGRES_DB=postgres
+    ports:
+      - "15432:5432"
+    volumes:
+      - ./data/db_data_postgres_one:/var/lib/postgresql/data
+
+  postgres-two:
+    image: postgres:latest
+    container_name: postgres-two
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres-two
+      - POSTGRES_PASSWORD=postgres-two
+      - POSTGRES_DB=postgres
+    ports:
+      - "25432:5432"
+    volumes:
+      - ./data/db_data_postgres_two:/var/lib/postgresql/data
+
+  mysql-one:
+    image: mysql:8.0.25
+    restart: always
+    container_name: mysql-one
+    environment:
+      MYSQL_ROOT_PASSWORD: 'test'
+      MYSQL_DATABASE: 'test'
+      MYSQL_USER: 'test'
+      MYSQL_PASSWORD: 'test'
+    ports:
+      - "13306:3306"
+    volumes:
+      - ./data/db_data_mysql_one:/var/lib/mysql
+
+volumes:
+  db_data_postgres_one:
+  db_data_postgres_two:
+  db_data_mysql_one:
