@@ -48,4 +48,4 @@ ENV CLASSPATH=./central.jar:./module-a.jar:./module-b.jar:./module-c.jar
 
 # Expose the port the app runs.
 EXPOSE 8080
-ENTRYPOINT ["java", "-cp", "./central.jar:./module-a.jar:./module-b.jar:./module-c.jar", "com.rasysbox.central.CentralApplication"]
+ENTRYPOINT ["java", "-jar", "/app/central.jar"]
